@@ -1,0 +1,19 @@
+POST http://localhost:3001/api/v1/users
+Content-Type: application/json
+
+{
+    "first_name": "tet",
+    "last_name": "tet",
+    "email": "test@gmail.com",
+    "password": "12345"
+}
+
+###
+
+PATCH http://localhost:3000/api/users/verify
+Content-Type: application/json
+
+{
+    "mobile_number": "09123456789",
+    "verification_code": "94139"
+}

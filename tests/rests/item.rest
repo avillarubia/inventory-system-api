@@ -1,0 +1,37 @@
+GET http://localhost:3001/api/v1/items
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDY1ZDYyMjMwNDgzMDMxZjQ3MTY5N2YiLCJmaXJzdF9uYW1lIjoiQWxqb2huIiwibGFzdF9uYW1lIjoiVmlsbGFydWJpYSIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJjcmVhdGVkQXQiOiIyMDIxLTA0LTAxVDE0OjE4OjExLjA4MFoiLCJ1cGRhdGVkQXQiOiIyMDIxLTA0LTAxVDE0OjE4OjExLjA4MFoiLCJfX3YiOjAsImlhdCI6MTYxNzI4NzMzNH0.MxMLVO15xpRd2akddo7klcBNhSAzNe3l5uEUUXbndOU
+###
+
+POST http://localhost:3001/api/v1/items
+Content-Type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDY1ZDYyMjMwNDgzMDMxZjQ3MTY5N2YiLCJmaXJzdF9uYW1lIjoiQWxqb2huIiwibGFzdF9uYW1lIjoiVmlsbGFydWJpYSIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJjcmVhdGVkQXQiOiIyMDIxLTA0LTAxVDE0OjE4OjExLjA4MFoiLCJ1cGRhdGVkQXQiOiIyMDIxLTA0LTAxVDE0OjE4OjExLjA4MFoiLCJfX3YiOjAsImlhdCI6MTYxNzI4NzMzNH0.MxMLVO15xpRd2akddo7klcBNhSAzNe3l5uEUUXbndOU
+
+{
+    "name": "Javascript for Dummies",
+    "description": "book",
+    "price": 0,
+    "quantity": 1,
+    "keeper": "6065b359424dd552d8bb2096",
+    "date_stored": "2021-04-01T11:49:45.644Z"
+}
+
+###
+
+PATCH http://localhost:3001/api/v1/items
+Content-Type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDY1ZDYyMjMwNDgzMDMxZjQ3MTY5N2YiLCJmaXJzdF9uYW1lIjoiQWxqb2huIiwibGFzdF9uYW1lIjoiVmlsbGFydWJpYSIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJjcmVhdGVkQXQiOiIyMDIxLTA0LTAxVDE0OjE4OjExLjA4MFoiLCJ1cGRhdGVkQXQiOiIyMDIxLTA0LTAxVDE0OjE4OjExLjA4MFoiLCJfX3YiOjAsImlhdCI6MTYxNzI4NzMzNH0.MxMLVO15xpRd2akddo7klcBNhSAzNe3l5uEUUXbndOU
+
+{
+    "_id": "6065d69080b4f143b4ef73db",
+    "name": "Test for Dummies",
+    "description": "book",
+    "price": 0,
+    "quantity": 1,
+    "keeper": "6065b359424dd552d8bb2096",
+    "date_stored": "2021-04-01T11:49:45.644Z"
+}
+
+###
+
+DELETE http://localhost:3001/api/v1/items/6066f09f8d895f3f3c02c559
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDY1ZDYyMjMwNDgzMDMxZjQ3MTY5N2YiLCJmaXJzdF9uYW1lIjoiQWxqb2huIiwibGFzdF9uYW1lIjoiVmlsbGFydWJpYSIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJjcmVhdGVkQXQiOiIyMDIxLTA0LTAxVDE0OjE4OjExLjA4MFoiLCJ1cGRhdGVkQXQiOiIyMDIxLTA0LTAxVDE0OjE4OjExLjA4MFoiLCJfX3YiOjAsImlhdCI6MTYxNzI4NzMzNH0.MxMLVO15xpRd2akddo7klcBNhSAzNe3l5uEUUXbndOU

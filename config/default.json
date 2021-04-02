@@ -1,0 +1,6 @@
+{
+  "VERSION": "v1",
+  "JWT_SECRET": "",
+  "MONGO_URI": "mongodb://localhost/backend_template",
+  "FILE_SIZE_LIMIT": "50mb"
+}
