@@ -1,6 +1,9 @@
 const winston = require('winston')
 const express = require('express')
+const path = require('path')
 const app = express()
+
+app.use(express.static(path.join(__dirname, 'public')))
 
 require('./starters/logging')()
 require('./starters/parser')(app)
