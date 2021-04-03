@@ -4,7 +4,7 @@ const joigoose = require('joigoose')(mongoose)
 
 const schema = {
     name: Joi.string().min(1).max(50).label('name').required(),
-    description: Joi.string().min(1).max(500).label('description'),
+    description: Joi.string().allow('').max(500).label('description'),
     price: Joi.number().max(1000000).default(0).label('price'),
     quantity: Joi.number().max(100000).default(1).label('quantity').required(),
     keeper_id: Joi.string().max(50).label('keeper').required(),
@@ -17,6 +17,11 @@ const itemSchema = new mongoose.Schema(joigoose.convert(joiSchema), { timestamps
 
 const Item = mongoose.model('Item', itemSchema)
 
+const validateItem = (payload) => {
+    return joiSchema.validate(payload)
+}
+
 module.exports = {
-    Item
+    Item,
+    validateItem
 }

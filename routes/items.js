@@ -1,15 +1,15 @@
-const bcrpyt = require('bcrypt')
-const _ = require('lodash')
 const express = require('express')
 const router = express.Router()
-const { Item } = require('../models/item')
+const { Item, validateItem } = require('../models/item')
 const { User } = require('../models/user')
-const { authorization } = require('../middlewares/authorization')
+const { authorization, decodeToken } = require('../middlewares/authorization')
+const { validateBody } = require('../middlewares/validator')
 
 router.get('/', authorization, async (req, res) => {
-    const items = await Item.find({})
+    const decodedToken = decodeToken(req.headers['x-auth-token'])
 
-    const _items = []
+    const items = await Item.find({ keeper_id: decodedToken._id })
+
     const itemsPromise = await Promise.all(items.map(async item => {
         const user = await User.findById(item.keeper_id)
 
@@ -22,7 +22,7 @@ router.get('/', authorization, async (req, res) => {
     res.send(itemsPromise)
 })
 
-router.post('/', authorization, async (req, res) => {
+router.post('/', [authorization, validateBody(validateItem)], async (req, res) => {
     let item = new Item(req.body)
     item = await item.save()
 

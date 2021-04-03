@@ -11,7 +11,7 @@ router.post('/', validateBody(validateUser), async (req, res) => {
     if (user) return res.status(400).send('User already registered')
 
     user = new User(req.body)
-    user.password = hashPass(user.password)
+    user.password = await hashPass(user.password)
 
     await user.save()
 
@@ -29,7 +29,7 @@ router.patch('/', authorization, async (req, res) => {
     }
 
     if (password) {
-        req.body.password = hashPass(password)
+        req.body.password = await hashPass(password)
     }
 
     const user = await User.findByIdAndUpdate(_id, req.body, option)
@@ -42,7 +42,7 @@ router.patch('/', authorization, async (req, res) => {
 function generateToken(document) {
     const _doc = JSON.parse(JSON.stringify(document))
     const picks = _.omit(_doc, ['password'])
-    const token = user.generateAuthToken(picks)
+    const token = document.generateAuthToken(picks)
 
     return token
 }
