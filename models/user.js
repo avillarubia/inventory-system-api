@@ -9,7 +9,8 @@ const schema = {
     first_name: Joi.string().min(1).max(50).label('first name'),
     last_name: Joi.string().min(1).max(50).label('last name'),
     email: Joi.string().min(5).max(50).email().required(),
-    password: Joi.string().min(5).max(1024).required()
+    password: Joi.string().min(5).max(1024).required(),
+    avatar: Joi.string().max(500)
 }
 
 const joiSchema = Joi.object(schema)

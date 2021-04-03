@@ -14,8 +14,18 @@ const authorization = (req, res, next) => {
     }
 }
 
+const decodeToken = (token) => {
+    try {
+        const user = jwt.decode(token)
+        return user
+    } catch (error) {
+        return null
+    }
+}
+
 module.exports = {
-    authorization
+    authorization,
+    decodeToken
 }
 
 

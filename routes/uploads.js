@@ -1,7 +1,9 @@
 const path = require("path");
 const multer = require("multer");
 const express = require('express');
-const { authorization } = require("../middlewares/authorization");
+const _ = require('lodash')
+const { authorization, decodeToken } = require("../middlewares/authorization");
+const { User } = require("../models/user");
 const router = express.Router()
 
 const storage = multer.diskStorage({
@@ -20,7 +22,21 @@ const upload = multer({
 }).single("myImage");
 
 router.post('/', [authorization, upload], async (req, res) => {
-    res.send('SUCCESS')
+    const decodedToken = decodeToken(req.headers['x-auth-token'])
+
+    const update = {
+        avatar: req.file.filename
+    }
+    const option = {
+        new: true
+    }
+    const user = await User.findByIdAndUpdate(decodedToken._id, update, option)
+
+    const _user = JSON.parse(JSON.stringify(user))
+    const picks = _.omit(_user, ['password'])
+    const token = user.generateAuthToken(picks)
+
+    res.send(token)
 })
 
 module.exports = router

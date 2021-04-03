@@ -10,10 +10,13 @@ Content-Type: application/json
 
 ###
 
-PATCH http://localhost:3000/api/users/verify
+PATCH http://localhost:3001/api/v1/users
 Content-Type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDY1ZDYyMjMwNDgzMDMxZjQ3MTY5N2YiLCJmaXJzdF9uYW1lIjoiQWxqb2huIiwibGFzdF9uYW1lIjoiVmlsbGFydWJpYSIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJjcmVhdGVkQXQiOiIyMDIxLTA0LTAxVDE0OjE4OjExLjA4MFoiLCJ1cGRhdGVkQXQiOiIyMDIxLTA0LTAxVDE0OjE4OjExLjA4MFoiLCJfX3YiOjAsImlhdCI6MTYxNzI4NzMzNH0.MxMLVO15xpRd2akddo7klcBNhSAzNe3l5uEUUXbndOU
 
 {
-    "mobile_number": "09123456789",
-    "verification_code": "94139"
+    "_id": "6065b359424dd552d8bb2096",
+    "first_name": "tet",
+    "last_name": "tet",
+    "password": "123456"
 }
