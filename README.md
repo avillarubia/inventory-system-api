@@ -1,11 +1,14 @@
-### `Copy project path and paste it to CMD then type`
+### `1. Copy project path and paste it to CMD then type`
 example: cd C:\NODE\inventory-system-api
 
-### `To run type`
+### `2. Download the libraries, type`
+npm install
+
+### `3. To run type`
 npm start
 
-### `Check if the result has`
+### `4. Check if the result has`
 info: Listening on port 3001...
 info: Connected to MongoDB...
 
-### `Congrats!`
+### `5. Congrats!`
