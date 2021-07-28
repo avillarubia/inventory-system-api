@@ -15,6 +15,14 @@ const schema = {
 
 const joiSchema = Joi.object(schema)
 
+const schema2 = {
+    first_name: Joi.string().min(1).max(50).label('first name'),
+    last_name: Joi.string().min(1).max(50).label('last name'),
+    password: Joi.string().min(5).max(1024).required()
+}
+
+const joiSchema2 = Joi.object(schema2)
+
 const userSchema = new mongoose.Schema(joigoose.convert(joiSchema), { timestamps: true })
 
 userSchema.methods.generateAuthToken = function (picks) {
@@ -33,10 +41,15 @@ const validateUser = (payload) => {
     return joiSchema.validate(payload)
 }
 
+const validateUserUpdates = (payload) => {
+    return joiSchema2.validate(payload)
+}
+
 const User = mongoose.model('User', userSchema)
 
 module.exports = {
     validateAuth,
     validateUser,
+    validateUserUpdates,
     User
 }

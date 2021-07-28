@@ -2,7 +2,7 @@ const bcrpyt = require('bcrypt')
 const _ = require('lodash')
 const express = require('express')
 const router = express.Router()
-const { User, validateUser } = require('../models/user')
+const { User, validateUser, validateUserUpdates } = require('../models/user')
 const { validateBody } = require('../middlewares/validator')
 const { authorization } = require("../middlewares/authorization");
 
@@ -20,10 +20,12 @@ router.post('/', validateBody(validateUser), async (req, res) => {
     res.send(token)
 })
 
-router.patch('/', authorization, async (req, res) => {
+router.patch('/update/:_id', [authorization, validateBody(validateUserUpdates)], async (req, res) => {
     delete req.body.email
 
-    const { _id, password } = req.body
+    const { password } = req.body
+    const { _id } = req.params
+
     const option = {
         new: true
     }
